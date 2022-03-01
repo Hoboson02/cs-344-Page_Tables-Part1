@@ -23,12 +23,14 @@ void initialize_mem(void)
 unsigned char get_page(void)
 {
     // TODO
-    //For each page_number in the Used Page array in zero page:
-    //     If it's unused (if it's 0):
-    //         mem[page_number] = 1 // mark used
-    //         return the page_number
+    for (int page_number = 0; mem[page_number] <= PAGE_COUNT; page_number ++) {  //For each page_number in the Used Page array(Used Page array is the first 64 bytes of zero page) in zero page:
+    	if (mem == 0) {	  //     If it's unused (if it's 0):
+            mem[page_number] = 1; // mark used
+    		return page_number;//         return the page_number
+		}
+	}
 
-    // return 0xff  // indicating no free pages
+    return 0xff;  // indicating no free pages
 }
 //
 // Allocate pages for a new process
