@@ -1,13 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
-#define MEM_SIZE 16384  // MUST equal PAGE_SIZE * PAGE_COUNT
-#define PAGE_SIZE 256  // MUST equal 2^PAGE_SHIFT
-#define PAGE_COUNT 64
-#define PAGE_SHIFT 8  // Shift page number this much
-// Simulated RAM
-unsigned char mem[MEM_SIZE];
+#include "ptsim.h"
 //
 // Convert a page,offset into an address
 //
@@ -21,8 +12,8 @@ int get_address(int page, int offset)
 void initialize_mem(void)
 {
     // TODO
-    // 1. Zero every byte of physical memory in the mem array.
-    // 2. Mark zero page as "used" in the Used Page Table. (That is, set mem[0] to 1.)
+    mem[MEM_SIZE] = 0;// 1. Zero every byte of physical memory in the mem array.
+    mem[0] = 1; // 2. Mark zero page as "used" in the Used Page Table. (That is, set mem[0] to 1.)
 }
 //
 // Allocate a physical page
