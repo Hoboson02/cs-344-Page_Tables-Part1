@@ -47,7 +47,7 @@ void new_process(int proc_num, int page_count)
     mem[64 + proc_num] = page_table;
 
     // Allocate data pages
-    for (int i = 0; i <= page_count && i >= 0; i++) { // For i from 0 to page_count:
+    for (int i = 0; i < page_count; i++) { // For i from 0 to page_count:
         int new_page = get_page();
 
         // page_table = mem[i]->new_page;// Set the page table to map virt -> phys
