@@ -8,3 +8,8 @@
 #define PAGE_SHIFT 8  // Shift page number this much
 // Simulated RAM
 unsigned char mem[MEM_SIZE];
+
+unsigned char get_page_table(int proc_num)
+{
+    return mem[proc_num + 64];
+}

@@ -40,21 +40,22 @@ unsigned char get_page(void)
 void new_process(int proc_num, int page_count)
 {
     // TODO
-    // // Get the page table page
-    // page_table = AllocatePage()
+    // Get the page table page
+    int page_table = get_page();
 
-    // // Set this process's page table pointer in zero page
-    // mem[64 + proc_num] = page_table
+    // Set this process's page table pointer in zero page
+    mem[64 + proc_num] = page_table;
 
-    // // Allocate data pages
-    // For i from 0 to page_count:
-    //     new_page = AllocatePage()
+    // Allocate data pages
+    for (int i = 0; i <= page_count && i >= 0; i++) { // For i from 0 to page_count:
+        int new_page = get_page();
 
-    //     // Set the page table to map virt -> phys
-    //     // Virtual page number is i
-    //     // Physical page number is new_page
-    //     pt_addr = GetAddress(page_table, i)
-    //     mem[pt_addr] = new_page
+        // page_table = mem[i]->new_page;// Set the page table to map virt -> phys
+        // Virtual page number is i
+        // Physical page number is new_page
+        int pt_addr = get_address(page_table, i);
+        mem[pt_addr] = new_page;
+	}
 }
 //
 // Print the free page map
